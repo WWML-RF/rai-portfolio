@@ -1,103 +1,138 @@
 import Image from "next/image";
-
+import Link from "next/link";
+import Footer from "@/components/Footer";
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main className="min-h-screen px-6 py-12 max-w-5xl mx-auto space-y-16">
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
+      {/* Hero Section */}
+      <section className="text-center space-y-6">
+        <Image
+          src="/gallery/avatar.webp"
+          alt="Rai Fails headshot"
+          width={120}
+          height={120}
+          className="mx-auto rounded-full"
+        />
+        <h1 className="text-5xl font-bold">
+          From the Field to Framework: Empowering San Antonio Brands with Strategy, Design, and Code.
+        </h1>
+        <p className="text-lg text-gray-200 max-w-2xl mx-auto">
+          Hi, I’m Rai Fails—a San Antonio, Texas-based strategist, industrial engineer, and veteran dedicated to turning complex systems into actionable solutions. With roots in industrial engineering, law, and communications, I help organizations streamline operations, elevate brand impact, and build sustainable growth. Whether automating logistics for the U.S. Army or optimizing digital workflows for legal teams, my work lives at the intersection of efficiency, clarity, and purpose.
+        </p>
+        <p className="text-lg text-gray-200 max-w-2xl mx-auto">
+          I also offer professional photography services—including portraits, family photos, graduation sessions, and event coverage—helping you celebrate milestones and preserve memories with creativity and care.       
+        </p>
+          <Link
+          href="/contact"
+          className="inline-block bg-blue-800 text-white px-6 py-3 rounded-md hover:bg-gray-800 transition"
+        >
+          Connect with Me
+        </Link>
+      </section>
+
+      {/* Featured Project */}
+      <div className="max-w-xl mx-auto">
+        <section className="bg-emerald-700 rounded-xl p-4 flex flex-col items-center space-y-2">
+          <h2 className="text-2xl font-semibold text-white">Featured Project</h2>
+          <p className="text-center text-white">
+            Recent project: <span className="font-medium">American Tenet Project Manager</span>
+          </p>
+          <Link
+            href="/work/american-tenet-project"
+            className="inline-block bg-blue-800 text-white px-5 py-2 rounded hover:bg-gray-800 transition"
+          >
+            Read More
+          </Link>
+        </section>
+      </div>
+
+      {/* About & Differentiators */}
+      <section className="space-y-6">
+        <h2 className="text-3xl font-semibold">What Sets Me Apart</h2>
+        <ul className="list-disc list-inside text-gray-200 space-y-2">
+          <li>
+            <b>Multidisciplinary Expertise:</b> I blend industrial engineering, legal strategy, and creative media to deliver holistic solutions.
+          </li>
+          <li>
+            <b>Results-Focused:</b> My work consistently reduces inefficiency, improves compliance, and helps brands communicate with clarity.
+          </li>
+          <li>
+            <b>Human-Centered:</b> I design systems and stories that empower people, not just processes.
+          </li>
+        </ul>
+        <h3 className="text-2xl font-semibold mt-6">Core Services</h3>
+        <ul className="list-disc list-inside text-gray-200 space-y-2">
+          <li>
+            <b>Process Optimization & Compliance:</b> Lean, Six Sigma, and data-driven strategies to cut waste, boost performance, and automate legal or compliance workflows.
+          </li>
+          <li>
+            <b>Digital Transformation & Brand Communications:</b> Integrating AI, dashboards, and automation to make your business agile—paired with strategic messaging, photography, and creative content.
+          </li>
+        </ul>
+      </section>
+
+      {/* Work Experience Preview */}
+      <section className="space-y-8">
+        <h2 className="text-3xl font-semibold">Work Experience</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 className="font-bold">Holliday Energy Law Group</h3>
+            <p className="text-gray-200">Legal Analyst (2023–2024)</p>
+            <ul className="list-disc list-inside text-gray-200 text-sm mt-2 space-y-1">
+              <li>Facilitated Lean process mapping, reducing cycle time by 15%.</li>
+              <li>Automated workflows, saving significant administrative time.</li>
+              <li>Developed KPI dashboards for leadership decisions.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-bold">United States Army</h3>
+            <p className="text-gray-200">Platoon Leader | Executive Officer (2015–2019)</p>
+            <ul className="list-disc list-inside text-gray-200 text-sm mt-2 space-y-1">
+              <li>Led logistics and operations for a 158-soldier company.</li>
+              <li>Reduced reporting errors by 30% with digital transformation.</li>
+              <li>Maintained 100% asset accountability across deployments.</li>
+            </ul>
+          </div>
+        </div>
+        <div className="text-center mt-6">
+          <Link
+            href="/projects"
+            className="inline-block bg-blue-800 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition"
+          >
+            Explore My Resume
+          </Link>
+        </div>
+      </section>
+
+      {/* Social & Contact Links */}
+      <section className="text-center space-y-4">
+        <h2 className="text-2xl font-semibold">Connect with Me</h2>
+        <div className="flex justify-center space-x-8 text-lg text-blue-600">
           <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            href="https://www.linkedin.com/in/raidionfails"
             target="_blank"
             rel="noopener noreferrer"
+            className="underline hover:text-blue-800"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
+            LinkedIn
           </a>
           <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            href="https://www.instagram.com/raidionfails"
             target="_blank"
             rel="noopener noreferrer"
+            className="underline hover:text-pink-600"
           >
-            Read our docs
+            Instagram
+          </a>
+          <a
+            href="mailto:raidion.fails@gmail.com"
+            className="underline hover:text-green-600"
+          >
+            Email Me
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+    </main>
   );
 }
