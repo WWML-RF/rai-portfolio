@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Masonry from "react-masonry-css";
 import galleryImages from "../../../data/gallery.json";
+import Image from "next/image";
 
 type GalleryImage = {
     src: string;
@@ -76,7 +77,7 @@ export default function GalleryPage() {
                 columnClassName="pl-4 bg-clip-padding"
             >
                 {filteredImages.map((img, index) => (
-                    <img
+                    <Image
                         key={index}
                         src={img.src}
                         alt={`Gallery image ${index + 1}`}
