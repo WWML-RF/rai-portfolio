@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main className="min-h-screen px-6 py-12 max-w-5xl mx-auto space-y-16">

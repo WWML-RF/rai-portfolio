@@ -28,7 +28,7 @@ export default function ContactPage() {
                 <header className="space-y-2 text-center">
                     <h1 className="text-4xl font-bold">Let’s Connect</h1>
                     <p className="text-gray-200">
-                        Whether you’re planning an event in San Antonio, optimizing your business systems, or building a digital experience—I'm here to help.
+                        Whether you’re planning an event in San Antonio, optimizing your business systems, or building a digital experience—I&apos;m here to help.
                     </p>
                 </header>
 

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SeoHead } from "@/components/SeoHead";
+//import { SeoHead } from "@/components/SeoHead";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";

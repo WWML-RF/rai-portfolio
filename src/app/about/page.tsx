@@ -114,7 +114,7 @@ export default function AboutPage() {
                     <section className="space-y-6 text-center max-w-xl">
                         <h2 className="text-2xl font-semibold">Let’s Connect</h2>
                         <p className="text-gray-200">
-                            Whether you're scaling systems or telling stories—I’d love to collaborate. Let’s build something real, resilient, and human-centered.
+                            Whether you&apos;re scaling systems or telling stories—I&apos;d love to collaborate. Let&apos;s build something real, resilient, and human-centered.
                         </p>
                         <Link
                             href="https://calendly.com/raidion-fails"

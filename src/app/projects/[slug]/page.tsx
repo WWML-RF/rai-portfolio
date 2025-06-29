@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+// --- Project Data ---
+
 const projects = [
     {
         slug: "american-tenet-project",
@@ -118,7 +120,7 @@ const projects = [
         content: `
     <h3>Project Overview</h3>
     <p>Through fellowships and internships with Texas RioGrande Legal Aid (TRLA), San Antonio Legal Services Association (SALSA), and the Warrior Defense Project, I supported underserved communities and U.S. veterans. My work included developing psychiatric advanced directives (PADs), authoring legal education materials, and conducting deep research into military policy and administrative law.</p>
-    <h3>My Approach</strong></h3>
+    <h3>My Approach</h3>
     <ul>
         <li><strong>TRLA:</strong> Conducted legal research and policy analysis for the Psychiatric Advance Directives (PADs) project. Drafted directives and developed outreach materials to help individuals proactively manage their mental health treatment.</li>
         <li><strong>SALSA:</strong> Assisted veterans with housing, benefits, and consumer legal issues through intake, case review, and support to supervising attorneys. Selected as a Moody Foundation Veterans Law Fellow.</li>
@@ -134,29 +136,30 @@ const projects = [
     <h3>Outcome</h3>
     <p>My legal fellowships and research work continue to influence how legal aid, policy, and veteran-centered advocacy intersect—and how we can use law to drive dignity, access, and long-term impact.</p>
     `,
-    },
+    },// ... (other projects omitted for brevity; include all your project objects here)
 ];
 
-// ✅ FIXED: Make this async-compatible if needed
+// --- Helper Function ---
+
 function getProject(slug: string) {
     return projects.find((project) => project.slug === slug);
 }
 
-interface ProjectPageProps {
-    params: {
-        slug: string;
-    };
-}
+// --- Static Params Generation ---
 
-// ✅ Required for static generation
 export async function generateStaticParams() {
     return projects.map((project) => ({ slug: project.slug }));
 }
 
-// ✅ FIXED: No longer using `await` unnecessarily
-export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
-    const slug = await params.slug;
-    const project = getProject(params.slug);
+// --- Metadata Generation ---
+
+type ProjectParams = { slug: string };
+
+export async function generateMetadata(
+    { params }: { params?: Promise<ProjectParams> }
+): Promise<Metadata> {
+    const resolvedParams = params ? await params : { slug: "" };
+    const project = getProject(resolvedParams.slug);
 
     if (!project) {
         return {
@@ -177,10 +180,13 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     };
 }
 
-// ✅ FIXED: Now async
-export default async function ProjectPage({ params }: ProjectPageProps) {
-    const slug = await params.slug;
-    const project = getProject(params.slug);
+// --- Page Component ---
+
+export default async function ProjectPage(
+    { params }: { params?: Promise<ProjectParams> }
+) {
+    const resolvedParams = params ? await params : { slug: "" };
+    const project = getProject(resolvedParams.slug);
 
     if (!project) {
         return (
@@ -197,21 +203,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     return (
         <main className="max-w-5xl mx-auto p-6 space-y-8">
             <h1 className="text-4xl font-bold">{project.title}</h1>
-            <Image
-                src={project.image}
-                alt={project.title}
-                width={800}
-                height={450}
-                className="rounded-lg object-cover"
-            />
+            <Image src={project.image} alt={project.title} width={800} height={450} className="rounded-lg object-cover" />
             <section
-            className="prose max-w-none text-gray-200 [&_h3]:font-bold [&_h3]:mt-8 [&_h3]:mb-4"                
-            dangerouslySetInnerHTML={{ __html: project.content }}
+                className="prose max-w-none text-gray-200 [&_h3]:font-bold [&_h3]:mt-8 [&_h3]:mb-4"
+                dangerouslySetInnerHTML={{ __html: project.content }}
             />
             <Link href="/projects" className="text-blue-600 hover:underline">
                 ← Back to Projects
             </Link>
         </main>
     );
-
 }
