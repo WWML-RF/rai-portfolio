@@ -4,7 +4,7 @@ const nextConfig = {
     domains: ["your-image-host.com"], // Update this with actual domains if needed
   },
   experimental: {
-    serverActions: true,
+    serverActions: {}
   },
 };
 
