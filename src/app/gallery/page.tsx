@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import Masonry from "react-masonry-css";
 import galleryImages from "../../../data/gallery.json";
@@ -77,12 +76,16 @@ export default function GalleryPage() {
                 columnClassName="pl-4 bg-clip-padding"
             >
                 {filteredImages.map((img, index) => (
-                    <Image
-                        key={index}
-                        src={img.src}
-                        alt={`Gallery image ${index + 1}`}
-                        className="mb-4 rounded shadow cursor-pointer hover:opacity-90 transition"
-                    />
+                    <div key={index} className="mb-4 relative">
+                        <Image
+                            src={img.src}
+                            alt={`Gallery image ${index + 1}`}
+                            width={400}
+                            height={600}
+                            className="rounded shadow cursor-pointer hover:opacity-90 transition w-full h-auto"
+                            style={{ objectFit: 'cover' }}
+                        />
+                    </div>
                 ))}
             </Masonry>
 

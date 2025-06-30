@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="min-h-screen px-6 py-12 max-w-5xl mx-auto space-y-16">
@@ -17,12 +18,12 @@ export default function Home() {
           From the Field to Framework: Empowering San Antonio Brands with Strategy, Design, and Code.
         </h1>
         <p className="text-lg text-gray-200 max-w-2xl mx-auto">
-          Hi, I’m Rai Fails—a San Antonio, Texas-based strategist, industrial engineer, and veteran dedicated to turning complex systems into actionable solutions. With roots in industrial engineering, law, and communications, I help organizations streamline operations, elevate brand impact, and build sustainable growth. Whether automating logistics for the U.S. Army or optimizing digital workflows for legal teams, my work lives at the intersection of efficiency, clarity, and purpose.
+          Hi, I'm Rai Fails—a San Antonio, Texas-based strategist, industrial engineer, and veteran dedicated to turning complex systems into actionable solutions. With roots in industrial engineering, law, and communications, I help organizations streamline operations, elevate brand impact, and build sustainable growth. Whether automating logistics for the U.S. Army or optimizing digital workflows for legal teams, my work lives at the intersection of efficiency, clarity, and purpose.
         </p>
         <p className="text-lg text-gray-200 max-w-2xl mx-auto">
-          I also offer professional photography services—including portraits, family photos, graduation sessions, and event coverage—helping you celebrate milestones and preserve memories with creativity and care.       
+          I also offer professional photography services—including portraits, family photos, graduation sessions, and event coverage—helping you celebrate milestones and preserve memories with creativity and care.
         </p>
-          <Link
+        <Link
           href="/contact"
           className="inline-block bg-blue-800 text-white px-6 py-3 rounded-md hover:bg-gray-800 transition"
         >
@@ -38,7 +39,7 @@ export default function Home() {
             Recent project: <span className="font-medium">American Tenet Project Manager</span>
           </p>
           <Link
-            href="/work/american-tenet-project"
+            href="/projects/american-tenet-project"
             className="inline-block bg-blue-800 text-white px-5 py-2 rounded hover:bg-gray-800 transition"
           >
             Read More
@@ -99,7 +100,7 @@ export default function Home() {
             href="/projects"
             className="inline-block bg-blue-800 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition"
           >
-            Explore My Resume
+            View My Projects
           </Link>
         </div>
       </section>
