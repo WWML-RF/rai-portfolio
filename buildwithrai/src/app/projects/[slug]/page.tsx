@@ -6,8 +6,8 @@ import { Project } from '@/types/project';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// Remove custom interface to avoid conflicts with Next.js types
-// Extended project type for additional properties
+export const dynamicParams = true;
+
 interface ExtendedProject extends Project {
     description?: string;
     technologies?: string[];
