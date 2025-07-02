@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { SeoHead } from "@/components/SeoHead";
 
@@ -33,44 +33,31 @@ const images: ImageType[] = [
     { src: "/gallery/img_22.webp", alt: "Portrait 7", tags: ["portraits"] },
 ];
 
-const allTags = [
-    "all",
-    ...Array.from(
-        new Set(images.flatMap((image) => image.tags))
-    ).sort(),
-];
+const allTags = ["all", ...Array.from(new Set(images.flatMap((image) => image.tags))).sort()];
 
 export default function GalleryPage() {
     const [activeTag, setActiveTag] = useState("all");
     const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-
     const lightboxRef = useRef<HTMLDivElement>(null);
 
-    // Filter images by tag or show all
     const filteredImages =
-        activeTag === "all"
-            ? images
-            : images.filter((img) => img.tags.includes(activeTag));
+        activeTag === "all" ? images : images.filter((img) => img.tags.includes(activeTag));
 
-    // Open/Close Lightbox
     const openLightbox = (index: number) => setLightboxIndex(index);
     const closeLightbox = () => setLightboxIndex(null);
 
-    // Lightbox navigation
-    const showPrev = () => {
+    const showPrev = useCallback(() => {
         if (lightboxIndex !== null) {
-            setLightboxIndex(
-                (lightboxIndex + filteredImages.length - 1) % filteredImages.length
-            );
+            setLightboxIndex((lightboxIndex + filteredImages.length - 1) % filteredImages.length);
         }
-    };
-    const showNext = () => {
+    }, [lightboxIndex, filteredImages.length]);
+
+    const showNext = useCallback(() => {
         if (lightboxIndex !== null) {
             setLightboxIndex((lightboxIndex + 1) % filteredImages.length);
         }
-    };
+    }, [lightboxIndex, filteredImages.length]);
 
-    // Keyboard accessibility for Lightbox
     useEffect(() => {
         if (lightboxIndex === null) return;
 
@@ -82,15 +69,13 @@ export default function GalleryPage() {
 
         document.addEventListener("keydown", handleKeyDown);
         return () => document.removeEventListener("keydown", handleKeyDown);
-    }, [lightboxIndex, filteredImages.length]);
+    }, [lightboxIndex, showPrev, showNext]);
 
-    // Focus trap (basic)
     useEffect(() => {
         if (lightboxIndex === null) return;
 
         const previousActiveElement = document.activeElement as HTMLElement;
         lightboxRef.current?.focus();
-
         return () => previousActiveElement?.focus();
     }, [lightboxIndex]);
 
@@ -99,16 +84,16 @@ export default function GalleryPage() {
             <SeoHead
                 title="Gallery | Rai Fails Photography & Creative Work"
                 description="Explore a curated gallery of portraits, events, and landscapes captured by Rai Fails. Filter by category and enjoy high-quality images."
-                url="https://yourdomain.com/gallery"
+                url="https://buildwithrai.com/gallery"
                 image="/gallery/img_1.webp"
             />
 
             <main className="max-w-6xl mx-auto px-6 py-12">
-
-                {/* Intro paragraph */}
+                {/* Intro */}
                 <section className="max-w-3xl mx-auto mb-10 text-center text-gray-300 space-y-4">
                     <p>
-                        Based in San Antonio, I offer professional photography services specializing in portraits, events, and landscapes. My pricing starts at <strong>$150 per session</strong>, tailored to your unique needs and creative vision.
+                        Based in San Antonio, I offer professional photography services specializing in portraits, events, and landscapes. My pricing starts at{" "}
+                        <strong>$150 per session</strong>, tailored to your unique needs and creative vision.
                     </p>
                     <p>
                         Interested in capturing your moments? Let’s connect to discuss your project and schedule a session that fits your timeline and style.
@@ -122,20 +107,18 @@ export default function GalleryPage() {
                     </a>
                 </section>
 
-                {/* Tag Filter Buttons */}
-                <nav
-                    aria-label="Filter gallery by category"
-                    className="flex flex-wrap justify-center gap-4 mb-8"
-                >
+                {/* Filter */}
+                <nav className="flex flex-wrap justify-center gap-4 mb-8" aria-label="Filter gallery by category">
                     {allTags.map((tag) => (
                         <button
                             key={tag}
                             className={`px-4 py-2 rounded-full border font-semibold uppercase text-sm tracking-wide transition
-                focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
-                ${activeTag === tag
+                            focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
+                            ${
+                                activeTag === tag
                                     ? "bg-blue-700 text-white border-blue-700"
                                     : "bg-transparent text-gray-600 border-gray-400 hover:bg-blue-100 hover:text-blue-800"
-                                }`}
+                            }`}
                             aria-pressed={activeTag === tag}
                             onClick={() => setActiveTag(tag)}
                             type="button"
@@ -145,7 +128,7 @@ export default function GalleryPage() {
                     ))}
                 </nav>
 
-                {/* Masonry Grid */}
+                {/* Grid */}
                 <div
                     className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4"
                     style={{ columnGap: "1rem" }}
@@ -173,13 +156,12 @@ export default function GalleryPage() {
                                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 className="w-full h-auto object-cover"
                                 loading="lazy"
-                                priority={false}
                             />
                         </div>
                     ))}
                 </div>
 
-                {/* Closing CTA Section */}
+                {/* CTA */}
                 <section className="max-w-3xl mx-auto mt-12 text-center text-gray-300 space-y-4">
                     <p>
                         Ready to create stunning visuals that tell your story? Serving San Antonio and surrounding areas, I’m excited to collaborate with you on your next photography project.
@@ -196,7 +178,7 @@ export default function GalleryPage() {
                     </a>
                 </section>
 
-                {/* Lightbox Modal */}
+                {/* Lightbox */}
                 {lightboxIndex !== null && (
                     <div
                         ref={lightboxRef}
@@ -207,7 +189,7 @@ export default function GalleryPage() {
                         className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
                         onClick={closeLightbox}
                     >
-                        {/* ...lightbox content unchanged... */}
+                        {/* You can drop lightbox content here */}
                     </div>
                 )}
             </main>
