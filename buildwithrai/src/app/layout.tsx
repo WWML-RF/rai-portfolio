@@ -18,6 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         <main className="min-h-screen px-4">{children}</main>
         <ScrollToTop />
+        <Analytics />
         <Footer />
       </body>
     </html>
