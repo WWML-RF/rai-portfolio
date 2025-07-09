@@ -3,35 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { SeoHead } from "@/components/SeoHead";
-
-type ImageType = {
-    src: string;
-    alt: string;
-    tags: string[];
-};
-
-const images: ImageType[] = [
-    { src: "/gallery/img_1.webp", alt: "Portrait 1", tags: ["portraits"] },
-    { src: "/gallery/img_46.webp", alt: "Portrait 2", tags: ["portraits"] },
-    { src: "/gallery/img_3.webp", alt: "Event 1", tags: ["events"] },
-    { src: "/gallery/img_52.webp", alt: "Image 52", tags: [] },
-    { src: "/gallery/img_57.webp", alt: "Landscape 1", tags: ["landscapes"] },
-    { src: "/gallery/img_19.webp", alt: "Event 2", tags: ["events"] },
-    { src: "/gallery/img_65.webp", alt: "Event 3", tags: ["events"] },
-    { src: "/gallery/img_8.webp", alt: "Landscape 2", tags: ["landscapes"] },
-    { src: "/gallery/img_54.webp", alt: "Image 54", tags: [] },
-    { src: "/gallery/img_64.webp", alt: "Event 4", tags: ["events"] },
-    { src: "/gallery/img_51.webp", alt: "Landscape 3", tags: ["landscapes"] },
-    { src: "/gallery/img_61.webp", alt: "Event 5", tags: ["events"] },
-    { src: "/gallery/img_10.webp", alt: "Portrait 3", tags: ["portraits"] },
-    { src: "/gallery/img_53.webp", alt: "Portrait 4", tags: ["portraits"] },
-    { src: "/gallery/img_60.webp", alt: "Event 6", tags: ["events"] },
-    { src: "/gallery/img_67.webp", alt: "Event 7", tags: ["events"] },
-    { src: "/gallery/img_69.webp", alt: "Image 69", tags: [] },
-    { src: "/gallery/img_71.webp", alt: "Portrait 5", tags: ["portraits"] },
-    { src: "/gallery/img_20.webp", alt: "Portrait 6", tags: ["portraits"] },
-    { src: "/gallery/img_22.webp", alt: "Portrait 7", tags: ["portraits"] },
-];
+import { galleryImages as images } from "@/data/galleryImages";
 
 const allTags = ["all", ...Array.from(new Set(images.flatMap((image) => image.tags))).sort()];
 
@@ -85,7 +57,7 @@ export default function GalleryPage() {
                 title="Gallery | Rai Fails Photography & Creative Work"
                 description="Explore a curated gallery of portraits, events, and landscapes captured by Rai Fails. Filter by category and enjoy high-quality images."
                 url="https://buildwithrai.com/gallery"
-                image="/gallery/img_1.webp"
+                image={images[0]?.src || "/gallery/placeholder.webp"}
             />
 
             <main className="max-w-6xl mx-auto px-6 py-12">
