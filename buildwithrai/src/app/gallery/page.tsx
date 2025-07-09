@@ -65,7 +65,7 @@ export default function GalleryPage() {
                 <section className="max-w-3xl mx-auto mb-10 text-center text-gray-300 space-y-4">
                     <p>
                         Based in San Antonio, I offer professional photography services specializing in portraits, events, and landscapes. My pricing starts at{" "}
-                        <strong>$150 per session</strong>, tailored to your unique needs and creative vision.
+                        <strong>$85 per session</strong>, tailored to your unique needs and creative vision.
                     </p>
                     <p>
                         Interested in capturing your moments? Let’s connect to discuss your project and schedule a session that fits your timeline and style.
