@@ -7,6 +7,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 
+
 // Reusable hook for scroll animation
 function useScrollAnimation(threshold = 0.2) {
   const controls = useAnimation();
@@ -44,7 +45,7 @@ export default function HomePage() {
         title="Rai Fails | Strategy, Design, and Systems"
         description="Veteran-led creative and operational services — web development, process design, and photography in San Antonio, TX."
         url="https://buildwithrai.com"
-        image="/images/og/home.jpg"
+        image="/gallery/portrait-50-a-man-in-a-suit-and-white-shirt-smiles-at-the-camera.webp"
       />
 
       <main className="max-w-6xl mx-auto px-6 py-16 space-y-24 text-gray-100">
@@ -58,7 +59,7 @@ export default function HomePage() {
           className="text-center space-y-6"
         >
           <Image
-            src="/gallery/avatar.webp"
+            src="/gallery/portrait-50-a-man-in-a-suit-and-white-shirt-smiles-at-the-camera.webp"
             alt="Rai Fails headshot"
             width={120}
             height={120}

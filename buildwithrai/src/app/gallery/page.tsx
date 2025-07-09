@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { SeoHead } from "@/components/SeoHead";
-import { galleryImages as images } from "@/data/galleryImages";
+import { galleryImages as images } from '@/data/galleryImages';
 
 const allTags = ["all", ...Array.from(new Set(images.flatMap((image) => image.tags))).sort()];
 

@@ -7,6 +7,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 
+
 // Custom scroll animation hook
 function useScrollAnimation(threshold = 0.2) {
     const controls = useAnimation();
@@ -45,7 +46,7 @@ export default function AboutPage() {
                 title="About Rai Fails | Veteran Strategist & Systems Architect"
                 description="Meet Rai Fails, a U.S. Army veteran and creative systems engineer blending law, engineering, and storytelling to scale operations, compliance, and advocacy."
                 url="https://yourdomain.com/about"
-                image="/images/og/about.jpg"
+                image="/gallery/portrait-50-a-man-in-a-suit-and-white-shirt-smiles-at-the-camera.webp"
             />
 
             <main className="max-w-5xl mx-auto px-6 py-12 space-y-12">
@@ -59,7 +60,7 @@ export default function AboutPage() {
                     className="text-center space-y-4"
                 >
                     <Image
-                        src="/gallery/avatar.webp"
+                        src="/gallery/portrait-50-a-man-in-a-suit-and-white-shirt-smiles-at-the-camera.webp"
                         alt="Raidion Fails Headshot"
                         width={120}
                         height={120}

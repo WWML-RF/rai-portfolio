@@ -1,15 +1,16 @@
-// app/sitemap.xml/route.ts
 export async function GET() {
-    const base = 'https://buildwithrai.com';
+    const base = 'https://www.buildwithrai.com';
 
-    const urls = [
+    const staticPaths = [
         '',
         '/about',
         '/contact',
         '/projects',
         '/gallery',
-        '/hire'
-    ]
+        '/hire',
+    ];
+
+    const urls = staticPaths
         .map((path) => `<url><loc>${base}${path}</loc></url>`)
         .join('\n');
 
